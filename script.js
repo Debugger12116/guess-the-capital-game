@@ -1,5 +1,3 @@
-document.getElementById('pagrindinis').hidden = true
-
 const countries = [
     { country: "Albania", capital: "Tirana" },
     { country: "Andorra", capital: "Andorra la Vella" },
@@ -46,6 +44,7 @@ const countries = [
     { country: "United Kingdom", capital: "London" },
     { country: "Vatican City", capital: "Vatican City" }
 ];
+document.getElementById('pagrindinis').hidden = true
 let skaicius;
 let salis;
 let mygtukas = document.getElementById('saliuPasirinkimoMygtukas')
