@@ -1,3 +1,5 @@
+document.getElementById('pagrindinis').hidden = true
+
 const countries = [
     { country: "Albania", capital: "Tirana" },
     { country: "Andorra", capital: "Andorra la Vella" },
@@ -44,8 +46,20 @@ const countries = [
     { country: "United Kingdom", capital: "London" },
     { country: "Vatican City", capital: "Vatican City" }
 ];
-
+let skaicius;
 let salis;
+let mygtukas = document.getElementById('saliuPasirinkimoMygtukas')
+mygtukas.onclick = mygtukopaspaudimas
+
+
+
+
+function mygtukopaspaudimas() {
+    skaicius = document.getElementById('saliuSkaiciausPasirinkimas').value
+    document.getElementById('klausimasSalys').hidden = true
+    document.getElementById('pagrindinis').hidden = false
+}
+
 
 function naujasKlausimas() {
 
@@ -56,7 +70,3 @@ function naujasKlausimas() {
 
 
 naujasKlausimas()
-
-
-
-
