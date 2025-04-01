@@ -44,10 +44,11 @@ const countries = [
     { country: "United Kingdom", capital: "London" },
     { country: "Vatican City", capital: "Vatican City" }
 ];
+let i = 0
 document.getElementById('pagrindinis').hidden = true
 let skaicius;
 let salis;
-let mygtukas = document.getElementById('saliuPasirinkimoMygtukas')
+const mygtukas = document.getElementById('saliuPasirinkimoMygtukas')
 mygtukas.onclick = mygtukopaspaudimas
 
 
@@ -57,15 +58,30 @@ function mygtukopaspaudimas() {
     skaicius = document.getElementById('saliuSkaiciausPasirinkimas').value
     document.getElementById('klausimasSalys').hidden = true
     document.getElementById('pagrindinis').hidden = false
+    naujasKlausimas()
 }
 
+document.getElementById("atsMygtukas").addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        checkAnswer();
+    }
+}); 
+
+document.getElementById("atsMygtukas").onclick = checkAnswer
+
+function checkAnswer() {
+    //
+}
 
 function naujasKlausimas() {
 
-    salis = countries[Math.floor(Math.random() * countries.length)];
-    document.getElementById('klausimas').innerText = `Parašyk šios šalies sostinę: ${salis.country}`
+    if (i < skaicius) {
+        salis = countries[Math.floor(Math.random() * countries.length)];
+        document.getElementById('klausimas').innerText = `Parašyk šios šalies sostinę: ${salis.country}`
+    } else {
+        // gameOver()
+    }
 
 }
 
 
-naujasKlausimas()
