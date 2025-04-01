@@ -114,5 +114,14 @@ function gameOver() {
     */
     document.getElementById('pagrindinis').hidden = true
     document.getElementById('pabaiga').hidden = false
-    document.getElementById('pabaigosZinute').innerText = `Pabaiga. Rezultatas: ${score}/${skaicius}`
+
+    if (score === skaicius) {
+        document.getElementById('pabaigosZinute').innerText = `Pabaiga. Rezultatas: ${score}/${skaicius}`
+        document.getElementById('pabaigosZinute').style.color = 'red'
+    } else {
+        document.getElementById('pabaigosZinute').innerText = `Pabaiga. Rezultatas: ${score}/${skaicius}`
+        document.getElementById('pabaigosZinute').style.color = 'red'
+    }
+    
+    
 }
