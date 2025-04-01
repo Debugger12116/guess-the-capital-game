@@ -44,8 +44,11 @@ const countries = [
     { country: "United Kingdom", capital: "London" },
     { country: "Vatican City", capital: "Vatican City" }
 ];
+const result = document.getElementById('rezultatas')
 let i = 0
+let score = 0
 document.getElementById('pagrindinis').hidden = true
+document.getElementById('pabaiga').hidden = true
 let skaicius;
 let salis;
 const mygtukas = document.getElementById('saliuPasirinkimoMygtukas')
@@ -70,18 +73,46 @@ document.getElementById("atsMygtukas").addEventListener("keypress", function(eve
 document.getElementById("atsMygtukas").onclick = checkAnswer
 
 function checkAnswer() {
-    //
+    let atsakymas = document.getElementById('answer').value.trim()
+
+    if(atsakymas.toLowerCase() === salis.capital.toLowerCase()) {
+        score ++
+        result.innerText = 'Teisingai'
+        result.style.color = 'green'
+        setTimeout(naujasKlausimas, 1000)
+    } else {
+        result.innerText = `Neteisingai. Teisingas atsakymas yra ${salis.capital}`
+        result.style.color = 'red'
+        setTimeout(naujasKlausimas, 1000)
+    }
 }
 
 function naujasKlausimas() {
+    result.innerText = ''
 
     if (i < skaicius) {
         salis = countries[Math.floor(Math.random() * countries.length)];
         document.getElementById('klausimas').innerText = `Parašyk šios šalies sostinę: ${salis.country}`
+        i ++
     } else {
-        // gameOver()
+        gameOver()
     }
 
 }
 
 
+function gameOver() {
+    /*let pavadinimas2 = document.getElementsByClassName('pavadinimas')
+    let inputas2 = document.getElementById('saliuSkaiciausPasirinkimas')
+    let saliuskaiciuklausimas2 = document.getElementById('saliuskaiciuklausimas')
+    let saliuPasirinkimoMygtukas2 = document.getElementById('saliuPasirinkimoMygtukas')
+
+    pavadinimas2.innerText = ''
+    inputas2.style.display = 'hidden'
+    saliuskaiciuklausimas2.innerText = 'Žaidimas baigėsi'
+    saliuPasirinkimoMygtukas2.style.display = 'hidden'
+    */
+    document.getElementById('pagrindinis').hidden = true
+    document.getElementById('pabaiga').hidden = false
+    document.getElementById('pabaigosZinute').innerText = `Pabaiga. Rezultatas: ${score}/${skaicius}`
+}
