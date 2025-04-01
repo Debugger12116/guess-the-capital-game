@@ -44,6 +44,24 @@ const countries = [
     { country: "Vatikanas", capital: "Vatikanas" },
     { country: "Andora", capital: "Andora" }
 ];
+
+function imposeMinMax(el) {
+    if (el.value === "") {
+      el.value = 1
+    }; // Don't validate empty inputs
+    
+    const value = parseInt(el.value);
+    if (isNaN(value)) {
+      el.value = 1; // Default to 1 if not a number
+      return;
+    }
+    
+    if (value < 1) {
+      el.value = 1;
+    } else if (value > 44) {
+      el.value = 44;
+    }
+  }
 const result = document.getElementById('rezultatas')
 let i = 0
 let score = 0
@@ -87,7 +105,7 @@ function checkAnswer() {
         result.innerText = `Neteisingai. Teisingas atsakymas yra ${salis.capital}`
         result.style.color = 'red'
         document.getElementById('rez').innerText = `${score}/${i}`
-        setTimeout(naujasKlausimas, 1000)
+        setTimeout(naujasKlausimas, 2000)
     }
 }
 
@@ -107,6 +125,8 @@ function naujasKlausimas() {
     }
 
 }
+
+
 
 
 function gameOver() {
