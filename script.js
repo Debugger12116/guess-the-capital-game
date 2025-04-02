@@ -45,6 +45,18 @@ const countries = [
     { country: "Andora", capital: "Andora" }
 ];
 
+const pagrindinis2 = document.getElementById('pagrindinis')
+const pabaiga2 = document.getElementById('pabaiga')
+const result = document.getElementById('rezultatas')
+const mygtukas = document.getElementById('saliuPasirinkimoMygtukas')
+const atsMygtukas2 = document.getElementById("atsMygtukas")
+const klausimasSalys2 = document.getElementById('klausimasSalys')
+const answer2 = document.getElementById("answer")
+const rez2 = document.getElementById('rez')
+const klausimas2 = document.getElementById('klausimas')
+const pabaigosZinute2 = document.getElementById('pabaigosZinute')
+
+
 function imposeMinMax(el) {
     if (el.value === "") {
       el.value = 1
@@ -62,67 +74,65 @@ function imposeMinMax(el) {
       el.value = countries.length;
     }
   }
-const result = document.getElementById('rezultatas')
+
 let i = 0
 let selectedCountries = []
 let score = 0
-document.getElementById('pagrindinis').hidden = true
-document.getElementById('pabaiga').hidden = true
+pagrindinis2.hidden = true
+pabaiga2.hidden = true
 let skaicius;
 let salis;
 let curentCountry
 let isCheckingAnswer = false;
 
 
-const mygtukas = document.getElementById('saliuPasirinkimoMygtukas')
+
 
 
 mygtukas.onclick = mygtukopaspaudimas
-document.getElementById("atsMygtukas").onclick = checkAnswer
-
+atsMygtukas2.onclick = checkAnswer
 
 
 
 function mygtukopaspaudimas() {
     skaicius = document.getElementById('saliuSkaiciausPasirinkimas').value
-    document.getElementById('klausimasSalys').hidden = true
-    document.getElementById('pagrindinis').hidden = false
+    klausimasSalys2.hidden = true
+    pagrindinis2.hidden = false
     selectedCountries = [...countries].sort(() => 0.5 - Math.random()).slice(0, skaicius);
     naujasKlausimas()
 }
 
-document.getElementById("answer").addEventListener("keypress", function(event) {
+answer2.addEventListener("keypress", function(event) {
     if (event.key === "Enter" && !isCheckingAnswer) {
         checkAnswer();
     }
 });
 
 
-
 function checkAnswer() {
     isCheckingAnswer = true;
-    document.getElementById("atsMygtukas").disabled = "disabled";
-    let atsakymas = document.getElementById('answer').value.trim()
+    atsMygtukas2.disabled = "disabled";
+    let atsakymas = answer2.value.trim()
 
     if(atsakymas.toLowerCase() === curentCountry.capital.toLowerCase()) {
         score ++
         result.innerText = 'Teisingai'
         result.style.color = 'green'
-        document.getElementById('rez').innerText = `${score}/${i}`
+        rez2.innerText = `${score}/${i}`
         setTimeout(naujasKlausimas, 1000)
     } else {
         result.innerText = `Neteisingai. Teisingas atsakymas yra ${curentCountry.capital}`
         result.style.color = 'red'
-        document.getElementById('rez').innerText = `${score}/${i}`
+        rez2.innerText = `${score}/${i}`
         setTimeout(naujasKlausimas, 2000)
     }
 }
 
 function naujasKlausimas() {
-    document.getElementById('rez').innerText = `${score}/${i}`
+    rez2.innerText = `${score}/${i}`
     isCheckingAnswer = false;
-    document.getElementById("atsMygtukas").disabled = "";
-    document.getElementById('answer').value = ''
+    atsMygtukas2.disabled = "";
+    answer2.value = ''
     result.innerText = ''
 
     if (selectedCountries.length === 0) {
@@ -131,25 +141,23 @@ function naujasKlausimas() {
         
         curentCountry = selectedCountries.pop()
         salis = countries[Math.floor(Math.random() * countries.length)];
-        document.getElementById('klausimas').innerText = `Parašyk šios šalies sostinę: ${curentCountry.country}`
+        klausimas2.innerText = `Parašyk šios šalies sostinę: ${curentCountry.country}`
         i ++
     }
 
 }
 
 
-
-
 function gameOver() {
 
-    document.getElementById('pagrindinis').hidden = true
-    document.getElementById('pabaiga').hidden = false
+    pagrindinis2.hidden = true
+    pabaiga2.hidden = false
 
     if (score >= skaicius) {
-        document.getElementById('pabaigosZinute').innerText = `Pabaiga. Rezultatas: ${score}/${skaicius}`
-        document.getElementById('pabaigosZinute').style.color = 'green'
+        pabaigosZinute2.innerText = `Pabaiga. Rezultatas: ${score}/${skaicius}`
+        pabaigosZinute2.style.color = 'green'
     } else {
-        document.getElementById('pabaigosZinute').innerText = `Pabaiga. Rezultatas: ${score}/${skaicius}`
+        pabaigosZinute2.innerText = `Pabaiga. Rezultatas: ${score}/${skaicius}`
     }
     
     
