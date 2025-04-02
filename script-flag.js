@@ -137,20 +137,20 @@ function checkAnswer() {
 }
 
 function naujasKlausimas() {
-    // First check if there are any countries left
+    
     if (selectedCountries.length === 0) {
         gameOver();
-        return; // Exit the function early
+        return; 
     }
     
-    // Then get a new country
+
     curentCountry = selectedCountries.pop();
     
-    // Now you can safely use curentCountry
+
     veliava2.src = `https://flagcdn.com/w320/${curentCountry.abbreviation.toLowerCase()}.png`;
     rez2.innerText = `${score}/${i}`;
     
-    // Reset UI elements
+    
     isCheckingAnswer = false;
     atsMygtukas2.disabled = "";
     answer2.value = '';
