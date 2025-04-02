@@ -55,6 +55,7 @@ const answer2 = document.getElementById("answer")
 const rez2 = document.getElementById('rez')
 const klausimas2 = document.getElementById('klausimas')
 const pabaigosZinute2 = document.getElementById('pabaigosZinute')
+const playAgain2 = document.getElementById('playAgain')
 
 
 function imposeMinMax(el) {
@@ -91,6 +92,11 @@ let isCheckingAnswer = false;
 
 mygtukas.onclick = mygtukopaspaudimas
 atsMygtukas2.onclick = checkAnswer
+playAgain2.onclick = funkcijaReload
+
+function funkcijaReload() {
+    location.reload()
+}
 
 
 

@@ -13,8 +13,8 @@
 <body>
     <div class="container">
         <div id="klausimasSalys" class="card">
-            <h2 class="pavadinimas">Pasirinkite skaičių</h2>
-            <h4 id="saliuskaiciuklausimas">Parašykite kiek Europos šalių norėtumėte atspėti</h4>
+            <h2 class="pavadinimas">Pasirinkite šalių kiekį</h2>
+            <h4 id="saliuskaiciuklausimas">Parašykite, kiek Europos šalių norėtumėte atspėti</h4>
             <input type="number" name="saliuskaicius" id="saliuSkaiciausPasirinkimas" max="44" min="1" oninput="imposeMinMax(this)" onchange="imposeMinMax(this)" value="10">
             <button id="saliuPasirinkimoMygtukas">Pradėti</button>
         </div>
@@ -30,6 +30,7 @@
         
         <div id="pabaiga" class="card">
             <h2 id="pabaigosZinute">Pabaiga</h2>
+            <button id="playAgain">Žaisti dar kartą</button>
         </div>
     </div>
     
