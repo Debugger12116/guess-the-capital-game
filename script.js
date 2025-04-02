@@ -58,27 +58,36 @@ function imposeMinMax(el) {
     
     if (value < 1) {
       el.value = 1;
-    } else if (value > 44) {
-      el.value = 44;
+    } else if (value > countries.length) {
+      el.value = countries.length;
     }
   }
 const result = document.getElementById('rezultatas')
 let i = 0
+let selectedCountries = []
 let score = 0
 document.getElementById('pagrindinis').hidden = true
 document.getElementById('pabaiga').hidden = true
 let skaicius;
 let salis;
-const mygtukas = document.getElementById('saliuPasirinkimoMygtukas')
-mygtukas.onclick = mygtukopaspaudimas
-
+let curentCountry
 let isCheckingAnswer = false;
+
+
+const mygtukas = document.getElementById('saliuPasirinkimoMygtukas')
+
+
+mygtukas.onclick = mygtukopaspaudimas
+document.getElementById("atsMygtukas").onclick = checkAnswer
+
+
 
 
 function mygtukopaspaudimas() {
     skaicius = document.getElementById('saliuSkaiciausPasirinkimas').value
     document.getElementById('klausimasSalys').hidden = true
     document.getElementById('pagrindinis').hidden = false
+    selectedCountries = [...countries].sort(() => 0.5 - Math.random()).slice(0, skaicius);
     naujasKlausimas()
 }
 
@@ -88,21 +97,21 @@ document.getElementById("answer").addEventListener("keypress", function(event) {
     }
 });
 
-document.getElementById("atsMygtukas").onclick = checkAnswer
+
 
 function checkAnswer() {
     isCheckingAnswer = true;
     document.getElementById("atsMygtukas").disabled = "disabled";
     let atsakymas = document.getElementById('answer').value.trim()
 
-    if(atsakymas.toLowerCase() === salis.capital.toLowerCase()) {
+    if(atsakymas.toLowerCase() === curentCountry.capital.toLowerCase()) {
         score ++
         result.innerText = 'Teisingai'
         result.style.color = 'green'
         document.getElementById('rez').innerText = `${score}/${i}`
         setTimeout(naujasKlausimas, 1000)
     } else {
-        result.innerText = `Neteisingai. Teisingas atsakymas yra ${salis.capital}`
+        result.innerText = `Neteisingai. Teisingas atsakymas yra ${curentCountry.capital}`
         result.style.color = 'red'
         document.getElementById('rez').innerText = `${score}/${i}`
         setTimeout(naujasKlausimas, 2000)
@@ -116,12 +125,14 @@ function naujasKlausimas() {
     document.getElementById('answer').value = ''
     result.innerText = ''
 
-    if (i < skaicius) {
-        salis = countries[Math.floor(Math.random() * countries.length)];
-        document.getElementById('klausimas').innerText = `Parašyk šios šalies sostinę: ${salis.country}`
-        i ++
-    } else {
+    if (selectedCountries.length === 0) {
         gameOver()
+    } else {
+        
+        curentCountry = selectedCountries.pop()
+        salis = countries[Math.floor(Math.random() * countries.length)];
+        document.getElementById('klausimas').innerText = `Parašyk šios šalies sostinę: ${curentCountry.country}`
+        i ++
     }
 
 }
