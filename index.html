@@ -3,37 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Europos šalių sostinės</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    
+    <title>Button Navigation Example</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            text-align: center;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 2rem;
+        }
+        
+        .button-container {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+        
+        button, .button {
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .primary-button {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        .secondary-button {
+            background-color: #2196F3;
+            color: white;
+        }
+        
+        button:hover, .button:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+        
+        button:focus, .button:focus {
+            outline: 3px solid rgba(0, 0, 0, 0.2);
+        }
+        
+        @media (max-width: 600px) {
+            .button-container {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <div id="klausimasSalys" class="card">
-            <h2 class="pavadinimas">Pasirinkite šalių kiekį</h2>
-            <h4 id="saliuskaiciuklausimas">Parašykite, kiek Europos šalių norėtumėte atspėti</h4>
-            <input type="number" name="saliuskaicius" id="saliuSkaiciausPasirinkimas" max="44" min="1" oninput="imposeMinMax(this)" onchange="imposeMinMax(this)" value="10">
-            <button id="saliuPasirinkimoMygtukas">Pradėti</button>
-        </div>
-        
-        <div id="pagrindinis" class="card">
-            <h2 class="pavadinimas">Atspėk sostinę</h2>
-            <h4 id="rez"></h4>
-            <h4 id="klausimas">Parašyk šios šalies sostinę: Šalis</h4>
-            <input type="text" id="answer" placeholder="Parašyk sostinę">
-            <button id="atsMygtukas">Tikrinti</button>
-            <p id="rezultatas"></p>
-        </div>
-        
-        <div id="pabaiga" class="card">
-            <h2 id="pabaigosZinute">Pabaiga</h2>
-            <button id="playAgain">Žaisti dar kartą</button>
+        <h1>Pasirinkite žaidimą</h1>
+        <div class="button-container">
+            <!-- Method 1: Using an anchor tag styled as a button -->
+            <a href="sostines.html" class="button primary-button">Sostinės</a>
+            
+            <!-- Method 2: Using JavaScript to navigate -->
+            <button class="secondary-button" id="jsButton">Vėliavos</button>
         </div>
     </div>
-    
-    <script src="script.js"></script>
+
+    <script>
+        // Method 2: JavaScript navigation
+        const jsButton = document.getElementById('jsButton');
+        
+        jsButton.addEventListener('click', () => {
+            window.location.href = 'flag-game.html';
+        });
+    </script>
 </body>
 </html>

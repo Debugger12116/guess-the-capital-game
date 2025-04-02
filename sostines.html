@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Europos šalių sostinės</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+    <div class="container">
+        <div id="klausimasSalys" class="card">
+            <h2 class="pavadinimas">Pasirinkite šalių kiekį</h2>
+            <h4 id="saliuskaiciuklausimas">Parašykite, kiek Europos šalių norėtumėte atspėti</h4>
+            <input type="number" name="saliuskaicius" id="saliuSkaiciausPasirinkimas" max="44" min="1" oninput="imposeMinMax(this)" onchange="imposeMinMax(this)" value="10">
+            <button id="saliuPasirinkimoMygtukas">Pradėti</button>
+        </div>
+        
+        <div id="pagrindinis" class="card">
+            <h2 class="pavadinimas">Atspėk sostinę</h2>
+            <h4 id="rez"></h4>
+            <h4 id="klausimas">Parašyk šios šalies sostinę: Šalis</h4>
+            <input type="text" id="answer" placeholder="Parašyk sostinę">
+            <button id="atsMygtukas">Tikrinti</button>
+            <p id="rezultatas"></p>
+        </div>
+        
+        <div id="pabaiga" class="card">
+            <h2 id="pabaigosZinute">Pabaiga</h2>
+            <button id="playAgain">Žaisti dar kartą</button>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
