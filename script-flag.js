@@ -3,7 +3,7 @@ const countries = [
     { country: "Andora", capital: "Andora", abbreviation: "AD" },
     { country: "Austrija", capital: "Viena", abbreviation: "AT" },
     { country: "Belgija", capital: "Briuselis", abbreviation: "BE" },
-    { country: "Bosnia ir Hercegovina", capital: "Sarajevas", abbreviation: "BA" },
+    { country: "Bosnija ir Hercegovina", capital: "Sarajevas", abbreviation: "BA" },
     { country: "Bulgarija", capital: "Sofija", abbreviation: "BG" },
     { country: "Kroatija", capital: "Zagrebas", abbreviation: "HR" },
     { country: "Kipras", capital: "Nikosija", abbreviation: "CY" },

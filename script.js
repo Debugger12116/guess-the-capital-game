@@ -3,7 +3,7 @@ const countries = [
     { country: "Andora", capital: "Andora" },
     { country: "Austrija", capital: "Viena" },
     { country: "Belgija", capital: "Briuselis" },
-    { country: "Bosnia ir Hercegovina", capital: "Sarajevas" },
+    { country: "Bosnija ir Hercegovina", capital: "Sarajevas" },
     { country: "Bulgarija", capital: "Sofija" },
     { country: "Kroatija", capital: "Zagrebas" },
     { country: "Kipras", capital: "Nikosija" },
