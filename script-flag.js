@@ -40,7 +40,7 @@ const countries = [
     { country: "Švedija", capital: "Stokholmas", abbreviation: "SE" },
     { country: "Šveicarija", capital: "Bernas", abbreviation: "CH" },
     { country: "Ukraina", capital: "Kijevas", abbreviation: "UA" },
-    { country: "Didžioji Britanija", capital: "Londonas", abbreviation: "GB" },
+    { country: "Jungtinė Karalystė", capital: "Londonas", abbreviation: "GB" },
     { country: "Vatikanas", capital: "Vatikanas", abbreviation: "VA" },
     { country: "Andora", capital: "Andora", abbreviation: "AD"}
 ];
