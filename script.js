@@ -40,9 +40,9 @@ const countries = [
     { country: "Švedija", capital: "Stokholmas" },
     { country: "Šveicarija", capital: "Bernas" },
     { country: "Ukraina", capital: "Kijevas" },
-    { country: "Didžioji Britanija", capital: "Londonas" },
+    { country: "Jungtinė Karalystė", capital: "Londonas" },
     { country: "Vatikanas", capital: "Vatikanas" },
-    { country: "Andora", capital: "Andora" }
+    { country: "Kosovas", capital: "Priština" }
 ];
 
 const pagrindinis2 = document.getElementById('pagrindinis')

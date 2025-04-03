@@ -1,195 +1,194 @@
 /* Base styles */
 :root {
-    --primary-color: #3498db;
-    --primary-dark: #2980b9;
-    --secondary-color: #f8f9fa;
-    --text-color: #333;
-    --border-radius: 12px;
-    --box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    --transition: all 0.3s ease;
-  }
-  
-  #veliava {
-    border: 1px solid black;
-  }
+  --primary-color: #3498db;
+  --primary-dark: #2980b9;
+  --secondary-color: #f8f9fa;
+  --text-color: #333;
+  --border-radius: 12px;
+  --box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
 
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    background-color: #f4f8fb;
-    font-family: 'Roboto', Arial, sans-serif;
-    color: var(--text-color);
-    line-height: 1.6;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+#veliava {
+  border: 1px solid black;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f4f8fb;
+  font-family: 'Roboto', Arial, sans-serif;
+  color: var(--text-color);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* Card styles */
+.card {
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 30px;
+  text-align: center;
+  transition: var(--transition);
+  width: 100%;
+}
+
+/* Important: Make sure hidden elements are actually hidden */
+[hidden] {
+  display: none !important;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Typography */
+h2.pavadinimas {
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+h4 {
+  margin-bottom: 15px;
+  color: #555;
+  font-weight: 500;
+}
+
+/* Form elements */
+input {
+  width: 100%;
+  padding: 12px 15px;
+  margin: 15px 0;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: var(--transition);
+  text-align: center;
+}
+
+input:focus {
+  border-color: var(--primary-color);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+input[type="number"] {
+  max-width: 150px;
+  margin: 15px auto;
+  display: block;
+}
+
+button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 25px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  display: block;
+  margin: 15px auto 0;
+  min-width: 150px;
+}
+
+button:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+button:disabled {
+  background-color: #a0c8e7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Specific card styles */
+#klausimasSalys, #pagrindinis, #pabaiga {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#rezultatas {
+  margin-top: 15px;
+  font-weight: 500;
+  min-height: 24px;
+}
+
+#pabaigosZinute {
+  font-size: 32px;
+  color: var(--primary-color);
+  margin: 20px 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .card {
     padding: 20px;
   }
   
-  .container {
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-  }
-  
-  /* Card styles */
-  .card {
-    background-color: white;
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    padding: 30px;
-    text-align: center;
-    transition: var(--transition);
-    width: 100%;
-  }
-  
-  /* Important: Make sure hidden elements are actually hidden */
-  [hidden] {
-    display: none !important;
-  }
-  
-  .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
-  }
-  
-  /* Typography */
   h2.pavadinimas {
-    color: var(--primary-color);
-    margin-bottom: 20px;
-    font-size: 28px;
-    font-weight: 700;
+    font-size: 24px;
+  }
+  
+  input, button {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+  
+  .container {
+    gap: 20px;
+  }
+  
+  h2.pavadinimas {
+    font-size: 22px;
   }
   
   h4 {
-    margin-bottom: 15px;
-    color: #555;
-    font-weight: 500;
-  }
-  
-  /* Form elements */
-  input {
-    width: 100%;
-    padding: 12px 15px;
-    margin: 15px 0;
-    border: 2px solid #e0e0e0;
-    border-radius: 8px;
     font-size: 16px;
-    transition: var(--transition);
-    text-align: center;
   }
-  
-  input:focus {
-    border-color: var(--primary-color);
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
-  }
-  
-  input[type="number"] {
-    max-width: 150px;
-    margin: 15px auto;
-    display: block;
-  }
-  
-  button {
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    padding: 12px 25px;
-    font-size: 16px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: var(--transition);
-    display: block;
-    margin: 15px auto 0;
-    min-width: 150px;
-  }
-  
-  button:hover {
-    background-color: var(--primary-dark);
-    transform: translateY(-2px);
-  }
-  
-  button:active {
-    transform: translateY(0);
-  }
-  
-  button:disabled {
-    background-color: #a0c8e7;
-    cursor: not-allowed;
-    transform: none;
-  }
-  
-  /* Specific card styles */
-  #klausimasSalys, #pagrindinis, #pabaiga {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  #rezultatas {
-    margin-top: 15px;
-    font-weight: 500;
-    min-height: 24px;
-  }
-  
-  #pabaigosZinute {
-    font-size: 32px;
-    color: var(--primary-color);
-    margin: 20px 0;
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    .card {
-      padding: 20px;
-    }
-    
-    h2.pavadinimas {
-      font-size: 24px;
-    }
-    
-    input, button {
-      padding: 10px;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    body {
-      padding: 10px;
-    }
-    
-    .container {
-      gap: 20px;
-    }
-    
-    h2.pavadinimas {
-      font-size: 22px;
-    }
-    
-    h4 {
-      font-size: 16px;
-    }
-  }
-  
-  /* Animation for transitions */
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  
-  #klausimasSalys:not([hidden]), 
-  #pagrindinis:not([hidden]), 
-  #pabaiga:not([hidden]) {
-    animation: fadeIn 0.5s ease-out;
-  }
+}
 
+/* Animation for transitions */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+#klausimasSalys:not([hidden]), 
+#pagrindinis:not([hidden]), 
+#pabaiga:not([hidden]) {
+  animation: fadeIn 0.5s ease-out;
+}
