@@ -42,7 +42,6 @@ const countries = [
     { country: "Ukraina", capital: "Kijevas" },
     { country: "Jungtinė Karalystė", capital: "Londonas" },
     { country: "Vatikanas", capital: "Vatikanas" },
-    { country: "Andora", capital: "Andora" },
     { country: "Kosovas", capital: "Priština" }
 ];
 
