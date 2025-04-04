@@ -7,10 +7,8 @@
   --border-radius: 12px;
   --box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   --transition: all 0.3s ease;
-}
-
-#veliava {
-  border: 1px solid black;
+  --error-color: #e74c3c;
+  --success-color: #2ecc71;
 }
 
 * {
@@ -21,7 +19,7 @@
 
 body {
   background-color: #f4f8fb;
-  font-family: 'Roboto', Arial, sans-serif;
+  font-family: "Roboto", Arial, sans-serif;
   color: var(--text-color);
   line-height: 1.6;
   min-height: 100vh;
@@ -49,11 +47,9 @@ body {
   text-align: center;
   transition: var(--transition);
   width: 100%;
-}
-
-/* Important: Make sure hidden elements are actually hidden */
-[hidden] {
-  display: none !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .card:hover {
@@ -75,8 +71,9 @@ h4 {
   font-weight: 500;
 }
 
-/* Form elements */
-input {
+/* Form elements - shared styles */
+input,
+select {
   width: 100%;
   padding: 12px 15px;
   margin: 15px 0;
@@ -85,9 +82,11 @@ input {
   font-size: 16px;
   transition: var(--transition);
   text-align: center;
+  background-color: white;
 }
 
-input:focus {
+input:focus,
+select:focus {
   border-color: var(--primary-color);
   outline: none;
   box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
@@ -99,7 +98,33 @@ input[type="number"] {
   display: block;
 }
 
-button {
+/* Select styling */
+.form-group {
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #555;
+  text-align: center;
+}
+
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px top 50%;
+  background-size: 12px auto;
+  padding-right: 30px;
+}
+
+/* Button styles */
+button,
+.button {
   background-color: var(--primary-color);
   color: white;
   border: none;
@@ -112,14 +137,18 @@ button {
   display: block;
   margin: 15px auto 0;
   min-width: 150px;
+  text-decoration: none;
 }
 
-button:hover {
+button:hover,
+.button:hover {
   background-color: var(--primary-dark);
   transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-button:active {
+button:active,
+.button:active {
   transform: translateY(0);
 }
 
@@ -129,17 +158,24 @@ button:disabled {
   transform: none;
 }
 
-/* Specific card styles */
-#klausimasSalys, #pagrindinis, #pabaiga {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
+/* Results styling */
 #rezultatas {
   margin-top: 15px;
   font-weight: 500;
   min-height: 24px;
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: var(--transition);
+}
+
+.correct {
+  color: var(--success-color);
+  background-color: rgba(46, 204, 113, 0.1);
+}
+
+.incorrect {
+  color: var(--error-color);
+  background-color: rgba(231, 76, 60, 0.1);
 }
 
 #pabaigosZinute {
@@ -148,18 +184,78 @@ button:disabled {
   margin: 20px 0;
 }
 
+/* Flag styling */
+#veliava {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  max-width: 200px;
+  height: auto;
+  margin: 15px 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Important: Make sure hidden elements are actually hidden */
+[hidden] {
+  display: none !important;
+}
+
+/* Animation for transitions */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card:not([hidden]) {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Range info styling */
+.range-info,
+.current-value {
+  font-size: 14px;
+  color: #666;
+  margin-top: 8px;
+}
+
+/* Button container for index page */
+.button-container {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.primary-button {
+  background-color: var(--primary-color);
+}
+
+.secondary-button {
+  background-color: #2196f3;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .card {
-    padding: 20px;
+    padding: 24px;
   }
-  
+
   h2.pavadinimas {
     font-size: 24px;
   }
-  
-  input, button {
+
+  input,
+  button,
+  select {
     padding: 10px;
+  }
+
+  .button-container {
+    flex-direction: column;
   }
 }
 
@@ -167,28 +263,27 @@ button:disabled {
   body {
     padding: 10px;
   }
-  
+
   .container {
     gap: 20px;
   }
-  
+
+  .card {
+    padding: 20px;
+  }
+
   h2.pavadinimas {
     font-size: 22px;
   }
-  
+
   h4 {
     font-size: 16px;
   }
+
+  button,
+  .button {
+    min-width: 120px;
+    padding: 10px 20px;
+  }
 }
 
-/* Animation for transitions */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-#klausimasSalys:not([hidden]), 
-#pagrindinis:not([hidden]), 
-#pabaiga:not([hidden]) {
-  animation: fadeIn 0.5s ease-out;
-}

@@ -13,9 +13,21 @@
 <body>
     <div class="container">
         <div id="klausimasSalys" class="card">
-            <h2 class="pavadinimas">Pasirinkite šalių kiekį</h2>
-            <h4 id="saliuskaiciuklausimas">Parašykite, kiek Europos šalių norėtumėte atspėti</h4>
-            <input type="number" name="saliuskaicius" id="saliuSkaiciausPasirinkimas" max="44" min="1" oninput="imposeMinMax(this)" onchange="imposeMinMax(this)" value="10">
+            <h2 class="pavadinimas">Pasirinkite žemyną ir šalių kiekį</h2>
+            <div class="form-group">
+                <label for="continent-select">Pasirinkite žemyną:</label>
+                <select id="continent-select">
+                  <option value="europe">Europa</option>
+                  <option value="asia">Azija</option>
+                  <option value="africa">Afrika</option>
+                  <option value="northAmerica">Šiaurės Amerika</option>
+                  <option value="southAmerica">Pietų Amerika</option>
+                  <option value="oceania">Okeanija</option>
+                </select>
+            </div>
+            <h4 id="saliuskaiciuklausimas">Parašykite, kiek šalių norėtumėte atspėti</h4>
+            <input type="number" name="saliuskaicius" id="saliuSkaiciausPasirinkimas" min="1" oninput="imposeMinMax(this)" onchange="imposeMinMax(this)" value="10">
+            <p class="range-info" id="country-count-info">Maksimalus šalių skaičius: 44</p>
             <button id="saliuPasirinkimoMygtukas">Pradėti</button>
         </div>
         
@@ -37,3 +49,4 @@
     <script src="script.js"></script>
 </body>
 </html>
+
