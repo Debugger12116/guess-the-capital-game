@@ -396,7 +396,6 @@ const continentData = {
     { country: "Vanuatu", capital: "Port Vila", abbreviation: "VU", alternatives: [] }
   ]
 }
-  // labas
   const pagrindinis = document.getElementById("pagrindinis")
   const pabaiga = document.getElementById("pabaiga")
   const result = document.getElementById("rezultatas")
