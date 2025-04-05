@@ -88,7 +88,7 @@ const continentData = {
       { country: "Tailandas", capital: "Bankokas", abbreviation: "TH", alternatives: [] },
       { country: "Turkija", capital: "Ankara", abbreviation: "TR", alternatives: [] },
       { country: "Turkmėnistanas", capital: "Ašchabadas", abbreviation: "TM", alternatives: [] },
-      { country: "Jungtiniai Arabų Emyratai", capital: "Abu Dabis", abbreviation: "AE", alternatives: [] },
+      { country: "Jungtiniai Arabų Emyratai", capital: "Abu Dabis", abbreviation: "AE", alternatives: ["JAE"] },
       { country: "Uzbekistanas", capital: "Taškentas", abbreviation: "UZ", alternatives: [] },
       { country: "Vietnamas", capital: "Hanojus", abbreviation: "VN", alternatives: [] },
       { country: "Jemenas", capital: "Sana", abbreviation: "YE", alternatives: [] }
