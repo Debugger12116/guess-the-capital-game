@@ -56,7 +56,7 @@ const continentData = {
       { country: "Kambodža", capital: "Pnompenis", abbreviation: "KH", alternatives: [] },
       { country: "Kinija", capital: "Pekinas", abbreviation: "CN", alternatives: [] },
       { country: "Kipras", capital: "Nikosija", abbreviation: "CY", alternatives: [] },
-      { country: "Gruzija", capital: "Tbilisis", abbreviation: "GE", alternatives: [] },
+      { country: "Sakartvelas", capital: "Tbilisis", abbreviation: "GE", alternatives: [] },
       { country: "Indija", capital: "Naujasis Delis", abbreviation: "IN", alternatives: [] },
       { country: "Indonezija", capital: "Džakarta", abbreviation: "ID", alternatives: [] },
       { country: "Irakas", capital: "Bagdadas", abbreviation: "IQ", alternatives: [] },
