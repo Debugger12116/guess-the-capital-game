@@ -500,51 +500,69 @@ const continentData = {
     }
   })
   
-  function checkAnswer() {
-    isCheckingAnswer = true
-    atsMygtukas.disabled = "disabled"
-    const atsakymas = answer.value.trim()
+// Add this function to normalize Lithuanian characters
+function normalizeLithuanianText(text) {
+  if (!text) return '';
   
-    if (atsakymas.toLowerCase() === curentCountry.capital.toLowerCase()) {
-      score++
-      result.innerText = "Teisingai"
-      result.style.color = "green"
-      rez.innerText = `${score}/${i}`
-      setTimeout(naujasKlausimas, 1000)
-    } else {
-      result.innerText = `Neteisingai. Teisingas atsakymas yra ${curentCountry.capital}`
-      result.style.color = "red"
-      rez.innerText = `${score}/${i}`
-      setTimeout(naujasKlausimas, 2000)
-    }
+  const replacements = {
+    'ą': 'a', 'č': 'c', 'ę': 'e', 'ė': 'e', 'į': 'i',
+    'š': 's', 'ų': 'u', 'ū': 'u', 'ž': 'z',
+    'Ą': 'A', 'Č': 'C', 'Ę': 'E', 'Ė': 'E', 'Į': 'I',
+    'Š': 'S', 'Ų': 'U', 'Ū': 'U', 'Ž': 'Z'
+  };
+  
+  return text.split('').map(char => replacements[char] || char).join('');
+}
+
+// Then modify the checkAnswer function like this:
+function checkAnswer() {
+  isCheckingAnswer = true;
+  atsMygtukas.disabled = "disabled";
+  const atsakymas = answer.value.trim();
+  
+  // Normalize both the user's answer and the correct answer
+  const normalizedAnswer = normalizeLithuanianText(atsakymas.toLowerCase());
+  const normalizedCapital = normalizeLithuanianText(curentCountry.capital.toLowerCase());
+  
+  // Check if the normalized answer matches the normalized capital name
+  if (normalizedAnswer === normalizedCapital) {
+    score++;
+    result.innerText = "Teisingai";
+    result.style.color = "green";
+    rez.innerText = `${score}/${i}`;
+    setTimeout(naujasKlausimas, 1000);
+  } else {
+    result.innerText = `Neteisingai. Teisingas atsakymas yra ${curentCountry.capital}`;
+    result.style.color = "red";
+    rez.innerText = `${score}/${i}`;
+    setTimeout(naujasKlausimas, 2000);
   }
+}
   
   function naujasKlausimas() {
-    rez.innerText = `${score}/${i}`
-    isCheckingAnswer = false
-    atsMygtukas.disabled = ""
-    answer.value = ""
-    result.innerText = ""
+    rez.innerText = `${score}/${i}`;
+    isCheckingAnswer = false;
+    atsMygtukas.disabled = "";
+    answer.value = "";
+    result.innerText = "";
   
     if (selectedCountries.length === 0) {
-      gameOver()
+      gameOver();
     } else {
-      curentCountry = selectedCountries.pop()
-      klausimas.innerText = `Parašyk šios šalies sostinę: ${curentCountry.country}`
-      i++
+      curentCountry = selectedCountries.pop();
+      klausimas.innerText = `Parašyk šios šalies sostinę: ${curentCountry.country}`;
+      i++;
     }
   }
   
   function gameOver() {
-    pagrindinis.hidden = true
-    pabaiga.hidden = false
+    pagrindinis.hidden = true;
+    pabaiga.hidden = false;
   
     if (score >= skaicius) {
-      pabaigosZinute.innerText = `Pabaiga. Rezultatas: ${score}/${skaicius}`
-      pabaigosZinute.style.color = "green"
+      pabaigosZinute.innerText = `Pabaiga. Rezultatas: ${score}/${skaicius}`;
+      pabaigosZinute.style.color = "green";
     } else {
-      pabaigosZinute.innerText = `Pabaiga. Rezultatas: ${score}/${skaicius}`
+      pabaigosZinute.innerText = `Pabaiga. Rezultatas: ${score}/${skaicius}`;
     }
   }
-  
-  

@@ -501,23 +501,45 @@ const continentData = {
     }
   })
   
-function checkAnswer() {
-  isCheckingAnswer = true
-  atsMygtukas.disabled = "disabled"
-  const atsakymas = answer.value.trim()
+// Add this function to normalize Lithuanian characters
+function normalizeLithuanianText(text) {
+  if (!text) return '';
+  
+  const replacements = {
+    'ą': 'a', 'č': 'c', 'ę': 'e', 'ė': 'e', 'į': 'i',
+    'š': 's', 'ų': 'u', 'ū': 'u', 'ž': 'z',
+    'Ą': 'A', 'Č': 'C', 'Ę': 'E', 'Ė': 'E', 'Į': 'I',
+    'Š': 'S', 'Ų': 'U', 'Ū': 'U', 'Ž': 'Z'
+  };
+  
+  return text.split('').map(char => replacements[char] || char).join('');
+}
 
-  if (atsakymas.toLowerCase() === curentCountry.country.toLowerCase() || 
-      curentCountry.alternatives.some((alt) => atsakymas.toLowerCase() === alt.toLowerCase())) {
-    score++
-    result.innerText = "Teisingai"
-    result.style.color = "green"
-    rez.innerText = `${score}/${i}`
-    setTimeout(naujasKlausimas, 1000)
+// Then modify the checkAnswer function like this:
+function checkAnswer() {
+  isCheckingAnswer = true;
+  atsMygtukas.disabled = "disabled";
+  const atsakymas = answer.value.trim();
+  
+  // Normalize both the user's answer and the correct answer
+  const normalizedAnswer = normalizeLithuanianText(atsakymas.toLowerCase());
+  const normalizedCountry = normalizeLithuanianText(curentCountry.country.toLowerCase());
+  
+  // Check if the normalized answer matches the normalized country name
+  // or any of the normalized alternatives
+  if (normalizedAnswer === normalizedCountry || 
+      curentCountry.alternatives.some(alt => 
+        normalizeLithuanianText(alt.toLowerCase()) === normalizedAnswer)) {
+    score++;
+    result.innerText = "Teisingai";
+    result.style.color = "green";
+    rez.innerText = `${score}/${i}`;
+    setTimeout(naujasKlausimas, 1000);
   } else {
-    result.innerText = `Neteisingai. Teisingas atsakymas yra ${curentCountry.country}`
-    result.style.color = "red"
-    rez.innerText = `${score}/${i}`
-    setTimeout(naujasKlausimas, 2000)
+    result.innerText = `Neteisingai. Teisingas atsakymas yra ${curentCountry.country}`;
+    result.style.color = "red";
+    rez.innerText = `${score}/${i}`;
+    setTimeout(naujasKlausimas, 2000);
   }
 }
   
@@ -551,5 +573,4 @@ function checkAnswer() {
       pabaigosZinute.innerText = `Pabaiga. Rezultatas: ${score}/${skaicius}`
     }
   }
-  
   
