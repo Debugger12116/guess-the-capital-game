@@ -501,24 +501,25 @@ const continentData = {
     }
   })
   
-  function checkAnswer() {
-    isCheckingAnswer = true
-    atsMygtukas.disabled = "disabled"
-    const atsakymas = answer.value.trim()
-  
-    if (atsakymas.toLowerCase() === curentCountry.country.toLowerCase() || curentCountry.alternatives.some((alt) => atsakymas === alt.toLowerCase())) {
-      score++
-      result.innerText = "Teisingai"
-      result.style.color = "green"
-      rez.innerText = `${score}/${i}`
-      setTimeout(naujasKlausimas, 1000)
-    } else {
-      result.innerText = `Neteisingai. Teisingas atsakymas yra ${curentCountry.country}`
-      result.style.color = "red"
-      rez.innerText = `${score}/${i}`
-      setTimeout(naujasKlausimas, 2000)
-    }
+function checkAnswer() {
+  isCheckingAnswer = true
+  atsMygtukas.disabled = "disabled"
+  const atsakymas = answer.value.trim()
+
+  if (atsakymas.toLowerCase() === curentCountry.country.toLowerCase() || 
+      curentCountry.alternatives.some((alt) => atsakymas.toLowerCase() === alt.toLowerCase())) {
+    score++
+    result.innerText = "Teisingai"
+    result.style.color = "green"
+    rez.innerText = `${score}/${i}`
+    setTimeout(naujasKlausimas, 1000)
+  } else {
+    result.innerText = `Neteisingai. Teisingas atsakymas yra ${curentCountry.country}`
+    result.style.color = "red"
+    rez.innerText = `${score}/${i}`
+    setTimeout(naujasKlausimas, 2000)
   }
+}
   
   function naujasKlausimas() {
     if (selectedCountries.length === 0) {
